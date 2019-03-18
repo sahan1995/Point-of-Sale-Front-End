@@ -1,0 +1,11 @@
+<agm-map [latitude]="lat" [longitude]="lng" (mapClick)="clickLocation($event)">
+
+  <agm-marker [latitude]="lat" [longitude]="lng">
+
+    <agm-info-window [disableAutoPan]="true">
+      Hi, this is the content of the <strong>info window</strong>
+    </agm-info-window>
+  </agm-marker>
+  <agm-direction [origin]="origin" [destination]="destination">
+  </agm-direction>
+</agm-map>

@@ -1,0 +1,78 @@
+
+
+<div class="row">
+  <div class="col-sm-4">
+
+<div style="padding-left: 20px;">
+<form #userForm="ngForm">
+
+        <mat-form-field style="width: 85%;">
+
+          <input matInput placeholder="Customer ID " name="id" #id [(ngModel)]="Cid" id="Cusid">
+        </mat-form-field> &nbsp;
+        <button mat-stroked-button  (click)="findByID(id.value)">Search </button>
+
+
+
+    <mat-form-field style="width: 100%;">
+      <input matInput placeholder="Customer Name " name="name"   [(ngModel)]="name"  id="name">
+    </mat-form-field>
+
+
+    <mat-form-field style="width: 100%;">
+      <textarea matInput placeholder="Customer Address" name="address"   [(ngModel)]="address"  id="address"></textarea>
+    </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <input matInput placeholder="User Name " name="username"  ngModel id="username">
+  </mat-form-field>
+
+
+
+  <mat-form-field style="width: 100%;">
+    <input matInput placeholder="Password" name="password"  type="password"  ngModel  id="password">
+  </mat-form-field>
+
+
+  <input type="file" name="image" accept="/*" (change)="showPreviewImage($event)" #myFile><br>
+
+  <button mat-raised-button color="primary" (click)="saveCustomer(id.value,userForm)" >Save </button> &nbsp;
+  <button mat-raised-button color="accent" (click)="updateCustomer(id.value,userForm)">Update</button>&nbsp;
+  <button mat-raised-button color="warn"(click)="deleteCustomer(id.value)">Delete</button>
+</form>
+</div>
+  </div>
+  <div class="col-sm-8">
+
+
+  <table class="table table table-hover" id="tbl">
+
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Address</th>
+    </tr>
+
+    <tbody>
+
+      <tr *ngFor="let cus of customers" (click)="rowClick(cus)" (mouseover)="mouseOver()">
+        <td>{{cus.id}}</td>
+        <td>{{cus.name}}</td>
+        <td>{{cus.address}}</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+
+  </div>
+</div>
+<img [src]="localUrl" *ngIf="localUrl" class="imgPlaceholder">
+
+
+<!--<img ng-src="data:image/JPEG;base64,{{img}}">-->
+<!--<img src="/download%20(1).png">-->
+<!--<input type="file" #myFile>-->
+<hr>
+<button (click)="uploadFile()">Upload</button>
